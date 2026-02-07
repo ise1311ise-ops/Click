@@ -1,157 +1,113 @@
-/*
- * Stylesheet for the Space Tycoon mini‑app.
- *
- * The design uses a dark cosmic backdrop and vibrant buttons. The layout is
- * intentionally simple to run well inside the constrained Telegram webview.
- */
-
-body {
-  margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-  color: #ffffff;
-  background: #000000 url("assets/background.png") center/cover no-repeat fixed;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding-top: 20px;
+:root{
+  --bg:#0b1220;
+  --card:#0f1b33;
+  --text:#e9f0ff;
+  --muted:#a9b7d6;
+  --pill:#15264a;
+  --border: rgba(255,255,255,.08);
+  --shadow: 0 12px 30px rgba(0,0,0,.35);
 }
-
-#game-container {
-  background: rgba(0, 0, 0, 0.7);
-  border-radius: 12px;
-  padding: 20px;
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: radial-gradient(1200px 700px at 20% 0%, #1a2b5a 0%, var(--bg) 55%);
+  color:var(--text);
+}
+.wrap{
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 14px 14px 22px;
+}
+.top{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:12px;
+  padding: 8px 2px 14px;
+}
+.title{font-size:22px; font-weight:800; letter-spacing:.2px}
+.sub{font-size:12px; color:var(--muted)}
+.stats{display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end}
+.pill{
+  background: var(--pill);
+  border:1px solid var(--border);
+  padding:8px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+}
+.card{
+  background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+  border:1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  padding: 14px;
+}
+.board{
+  --size: 7;
   width: 100%;
-  max-width: 480px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-  text-align: center;
+  aspect-ratio: 1 / 1;
+  display:grid;
+  grid-template-columns: repeat(var(--size), 1fr);
+  grid-template-rows: repeat(var(--size), 1fr);
+  gap: 8px;
+  padding: 8px;
+  border-radius: 14px;
+  background: rgba(0,0,0,.18);
+  border:1px solid var(--border);
+  touch-action: none; /* важно для свайпов */
 }
-
-h1 {
-  margin: 0 0 10px;
-  font-size: 24px;
+.cell{
+  position:relative;
+  border-radius: 14px;
+  background: rgba(255,255,255,.04);
+  border:1px solid var(--border);
+  overflow:hidden;
+  transform: translateZ(0);
 }
-
-#stats {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 10px;
-  border-radius: 8px;
-  margin-bottom: 15px;
-  font-size: 14px;
+.gem{
+  width:100%;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size: 20px;
+  user-select:none;
+  transition: transform 120ms ease, opacity 120ms ease;
 }
+.cell.sel .gem{transform: scale(0.9)}
+.cell.pop .gem{transform: scale(1.15); opacity:0.15}
 
-#collect-button {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(90deg, #4facfe, #00f2fe);
-  border: none;
-  border-radius: 12px;
-  color: #000;
-  padding: 15px;
-  width: 100%;
-  font-size: 18px;
-  cursor: pointer;
-  margin-bottom: 20px;
-  transition: transform 0.1s ease;
+.actions{
+  display:flex;
+  gap:10px;
+  margin-top: 12px;
 }
-
-#collect-button:hover {
-  transform: scale(1.03);
+.btn{
+  flex:1;
+  border:none;
+  border-radius: 14px;
+  padding: 12px 14px;
+  font-weight: 700;
+  background: #2b5cff;
+  color:#fff;
 }
-
-#collect-button img {
-  width: 60px;
-  height: 60px;
-  margin-bottom: 8px;
+.btn.ghost{
+  background: rgba(255,255,255,.06);
+  border:1px solid var(--border);
+  color: var(--text);
 }
-
-#upgrades {
-  margin-bottom: 20px;
+.btn:active{transform: translateY(1px)}
+.hint{
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 13px;
+  min-height: 18px;
 }
-
-#upgrades h2 {
-  margin-bottom: 10px;
-  font-size: 18px;
-}
-
-#upgrades button {
-  display: block;
-  width: 100%;
-  margin-bottom: 8px;
-  padding: 12px;
-  font-size: 14px;
-  border: none;
-  border-radius: 8px;
-  background: #1e90ff;
-  color: #ffffff;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-#upgrades button:hover {
-  background: #0f72d7;
-}
-
-#actions button {
-  display: block;
-  width: 100%;
-  margin-bottom: 8px;
-  padding: 12px;
-  font-size: 14px;
-  border: none;
-  border-radius: 8px;
-  background: #24c6dc; /* teal gradient base */
-  background: linear-gradient(90deg, #24c6dc, #514a9d);
-  color: #ffffff;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-#actions button:hover {
-  background: linear-gradient(90deg, #1fa6c0, #3f3a8f);
-}
-
-#actions .special {
-  background: linear-gradient(90deg, #f7941d, #fcb045);
-}
-
-#actions .special:hover {
-  background: linear-gradient(90deg, #d98112, #e09f3e);
-}
-
-#leaderboard {
-  margin-top: 20px;
-  text-align: left;
-  background: rgba(255, 255, 255, 0.08);
-  padding: 10px;
-  border-radius: 8px;
-  max-height: 300px;
-  overflow-y: auto;
-}
-
-#leaderboard.hidden {
-  display: none;
-}
-
-#leaderboard h2 {
-  margin-top: 0;
-  font-size: 18px;
-  text-align: center;
-}
-
-#leaderboard ol {
-  list-style: decimal inside;
-  padding-left: 0;
-  margin: 0;
-}
-
-#leaderboard li {
-  margin-bottom: 6px;
-  font-size: 14px;
+.foot{
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 12px;
+  text-align:center;
 }
