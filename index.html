@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Space Tycoon</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  </head>
+  <body>
+    <div id="game-container">
+      <h1>Space Tycoon</h1>
+      <p id="greeting"></p>
+      <div id="stats">
+        <span>Stardust: <span id="stardust">0</span></span>
+        <span>Click Power: <span id="click-power">1</span></span>
+        <span>Auto‑Miners: <span id="auto-miners">0</span></span>
+      </div>
+      <button id="collect-button">
+        <img src="assets/rocket_icon.png" alt="Collect" />
+        <span>Collect Stardust</span>
+      </button>
+      <div id="upgrades">
+        <h2>Upgrades</h2>
+        <button id="upgrade-click">Upgrade Drill (+1 power) — Cost: <span id="upgrade-click-cost">50</span></button>
+        <button id="upgrade-auto">Buy Auto‑Miner (+1 miner) — Cost: <span id="upgrade-auto-cost">200</span></button>
+      </div>
+      <div id="actions">
+        <button id="show-leaderboard">Leaderboard</button>
+        <button id="save-exit">Save &amp; Exit</button>
+        <button id="buy-booster" class="special">Buy Booster (via Stars)</button>
+      </div>
+      <div id="leaderboard" class="hidden">
+        <h2>Top Explorers</h2>
+        <ol id="leaderboard-list"></ol>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

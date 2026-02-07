@@ -1,0 +1,157 @@
+/*
+ * Stylesheet for the Space Tycoon mini‑app.
+ *
+ * The design uses a dark cosmic backdrop and vibrant buttons. The layout is
+ * intentionally simple to run well inside the constrained Telegram webview.
+ */
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  color: #ffffff;
+  background: #000000 url("assets/background.png") center/cover no-repeat fixed;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 20px;
+}
+
+#game-container {
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 12px;
+  padding: 20px;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+h1 {
+  margin: 0 0 10px;
+  font-size: 24px;
+}
+
+#stats {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+#collect-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(90deg, #4facfe, #00f2fe);
+  border: none;
+  border-radius: 12px;
+  color: #000;
+  padding: 15px;
+  width: 100%;
+  font-size: 18px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: transform 0.1s ease;
+}
+
+#collect-button:hover {
+  transform: scale(1.03);
+}
+
+#collect-button img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 8px;
+}
+
+#upgrades {
+  margin-bottom: 20px;
+}
+
+#upgrades h2 {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+#upgrades button {
+  display: block;
+  width: 100%;
+  margin-bottom: 8px;
+  padding: 12px;
+  font-size: 14px;
+  border: none;
+  border-radius: 8px;
+  background: #1e90ff;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+#upgrades button:hover {
+  background: #0f72d7;
+}
+
+#actions button {
+  display: block;
+  width: 100%;
+  margin-bottom: 8px;
+  padding: 12px;
+  font-size: 14px;
+  border: none;
+  border-radius: 8px;
+  background: #24c6dc; /* teal gradient base */
+  background: linear-gradient(90deg, #24c6dc, #514a9d);
+  color: #ffffff;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+#actions button:hover {
+  background: linear-gradient(90deg, #1fa6c0, #3f3a8f);
+}
+
+#actions .special {
+  background: linear-gradient(90deg, #f7941d, #fcb045);
+}
+
+#actions .special:hover {
+  background: linear-gradient(90deg, #d98112, #e09f3e);
+}
+
+#leaderboard {
+  margin-top: 20px;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 10px;
+  border-radius: 8px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+#leaderboard.hidden {
+  display: none;
+}
+
+#leaderboard h2 {
+  margin-top: 0;
+  font-size: 18px;
+  text-align: center;
+}
+
+#leaderboard ol {
+  list-style: decimal inside;
+  padding-left: 0;
+  margin: 0;
+}
+
+#leaderboard li {
+  margin-bottom: 6px;
+  font-size: 14px;
+}
