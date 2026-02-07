@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Islamic Mini App</title>
+    <!-- External libraries for prayer time and Hijri date calculations -->
+    <!-- PrayTime library calculates daily prayer times based on location and selected method.  -->
+    <!-- Load from praytimes.org; remote script is accessible and trusted. -->
+    <script src="https://praytimes.org/code/praytime/src/praytime.js"></script>
+    <!-- HijriDate library converts between Gregorian and Hijri calendars (Umm‑al‑Qura). -->
+    <script src="https://cdn.jsdelivr.net/npm/hijri-date@0.2.2/lib/safe.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1>Muslim Mini App</h1>
+            <nav id="navbar">
+                <button class="nav-btn active" data-section="times">Prayer Times</button>
+                <button class="nav-btn" data-section="qibla">Qibla Direction</button>
+                <button class="nav-btn" data-section="ramadan">Ramadan Schedule</button>
+                <button class="nav-btn" data-section="tasbih">Tasbih</button>
+            </nav>
+        </header>
+        <main>
+            <!-- Prayer Times Section -->
+            <section id="times" class="section active">
+                <h2>Daily Prayer Times</h2>
+                <p>Location: <span id="location-display">Detecting...</span></p>
+                <table id="times-table" class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Prayer</th>
+                            <th>Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Times will be injected here -->
+                    </tbody>
+                </table>
+                <div id="times-error" class="error-message"></div>
+            </section>
+
+            <!-- Qibla Section -->
+            <section id="qibla" class="section">
+                <h2>Qibla Direction</h2>
+                <div class="compass-container">
+                    <img src="assets/compass.png" alt="Compass" class="compass-img">
+                    <div id="qibla-arrow" class="arrow"></div>
+                </div>
+                <p>Direction to Kaaba: <span id="qibla-degree">—</span>° from true north</p>
+                <div id="qibla-error" class="error-message"></div>
+            </section>
+
+            <!-- Ramadan Schedule Section -->
+            <section id="ramadan" class="section">
+                <h2>Ramadan Fasting Schedule</h2>
+                <label for="ramadan-year">Select Year:</label>
+                <input type="number" id="ramadan-year" min="2025" max="2100" value="2026">
+                <button id="generate-ramadan">Generate Schedule</button>
+                <p id="ramadan-range"></p>
+                <table id="ramadan-table" class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Hijri Date</th>
+                            <th>Fajr (Start)</th>
+                            <th>Maghrib (End)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Ramadan times will appear here -->
+                    </tbody>
+                </table>
+                <div id="ramadan-error" class="error-message"></div>
+            </section>
+
+            <!-- Tasbih Section -->
+            <section id="tasbih" class="section">
+                <h2>Tasbih Counter</h2>
+                <div class="tasbih-container" id="tasbih-container">
+                    <img src="assets/beads.png" alt="Tasbih Beads" class="tasbih-img">
+                    <div id="tasbih-count" class="tasbih-count">0</div>
+                </div>
+                <div class="tasbih-controls">
+                    <button id="tasbih-increase">+1</button>
+                    <button id="tasbih-reset">Reset</button>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
