@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Gravity Defied Mini Game</title>
+  <!-- Ensure the game scales well on mobile devices -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- The entire game area -->
+  <div id="gameContainer">
+    <canvas id="gameCanvas"></canvas>
+    <!-- On‑screen controls for mobile users.  They also work on desktop. -->
+    <div id="controls">
+      <button id="btnAccelerate" title="Accelerate (Right arrow or D)">Газ</button>
+      <button id="btnBrake"      title="Brake / Reverse (Left arrow or A)">Тормоз</button>
+      <button id="btnTiltLeft"   title="Lean backward (Down arrow or S)">Наклон ←</button>
+      <button id="btnTiltRight"  title="Lean forward (Up arrow or W)">Наклон →</button>
+    </div>
+  </div>
+
+  <!-- Core game logic (no external libraries required) -->
+  <script src="script.js"></script>
+</body>
+</html>
